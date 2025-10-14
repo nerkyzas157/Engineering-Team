@@ -20,9 +20,8 @@ Secure, easy to use, no real money involved.
 
 ########################## Uncomment to enable user input ##########################
 # project_name = input("Enter the name of the project:\n")
+# print("/n")
 # requirements = input("Enter the requirements for the project:\n")
-# if ".py" not in module_name:
-#     module_name += ".py"
 
 
 def run():
