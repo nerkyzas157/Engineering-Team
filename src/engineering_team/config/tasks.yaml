@@ -1,0 +1,81 @@
+project_task:
+  description: >
+    Take the high level requirements described here and prepare a detailed design for the engineer;
+    everything should be in 1 python module, but outline the classes and methods in the module.
+    Here are the requirements: {user_requirements}
+  expected_output: >
+    A list with up to 10 bullet points of translated user request into project requirements.
+  agent: project_manager
+
+architecture_task:
+  description: >
+    Review the project requirements you got from the Project mMnager 
+    and generate two different and simple technical guidelines for the architecture of the project.
+    Make sure that technical guidelines are compatible with frontend and backend. 
+    Keep in mind that frontend depends on backend and vice versa, so compatibility is a huge factor.
+    IMPORTANT: Only output the design in markdown format, laying out in detail the classes 
+    and functions in the module, describing the functionality.
+  expected_output: >
+    Two sepparate and very detailed technical guidelines for the architecture of the project. 
+    One for the backend and one for the frontend.
+  agent: system_architect
+  context: 
+    - project_task
+
+requirements_task:
+  description: >
+    Based on the technical guidelines for the architecture of the project, 
+    generate a requirements.txt file that lists all the dependencies and their versions required for the application to run.
+  expected_output: >
+    A python requirements.txt file that lists all the dependencies required for the backend to run.
+    File **must** have an empty line at the end.
+    IMPORTANT: Output ONLY the raw text without any markdown formatting, code block delimiters, or backticks.
+    The output should be requirements.txt content that can be directly saved to a file and executed.
+  agent: system_architect
+  output_file: output/requirements.txt
+  context: 
+    - architecture_task
+
+backend_task:
+  description: >
+    Review the technical guidelines for backend you got from the System Architect and 
+    think of a plan how to achieve the requirements.
+    Write a python module that implements the design described by the System Architect, in order to achieve the requirements.
+    Once the backed code is ready, review it once again to make sure it's bug-free.
+  expected_output: >
+    A python module that implements the design and achieves the requirements.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed.
+  agent: backend_developer
+  output_file: output/{module_name}
+  context: 
+    - architecture_task
+
+frontend_task:
+  description: >
+    Review the technical guidelines for backend you got from the System Architect and 
+    think of a plan how to achieve the requirements. Compare them with the context you got from the backend task.
+    Your priority is to make frontend compatible with the backend.
+    Backend task was completed and the result is named {module_name}. Keep this in mind, when writing the frontend task.
+  expected_output: >
+    A gradio or streamlit UI in module app.py that demonstrates the given backend class.
+    The file should be ready so that it can be run as-is, in the same directory as the backend module, 
+    and it should import the backend class from backend.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed.
+  agent: frontend_developer
+  output_file: output/app.py
+  context: 
+    - architecture_task
+    - backend_task
+
+test_task:
+  description: >
+    Write unit tests for the given backend module {module_name} 
+    and create a test_{module_name} in the same directory as the backend module.
+  expected_output: >
+    A test_{module_name} module that tests the given backend module.
+    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
+    The output should be valid Python code that can be directly saved to a file and executed.
+  agent: test_engineer
+  output_file: output/test_{module_name}

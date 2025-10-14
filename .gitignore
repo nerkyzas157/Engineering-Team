@@ -1,0 +1,10 @@
+.env
+__pycache__/
+.DS_Store
+*.code-workspace
+tests/
+.venv/
+knowledge/
+tools/
+*.toml
+*.lock
