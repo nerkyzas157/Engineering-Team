@@ -84,8 +84,15 @@ crewai run
 ## Example Use Case
 
 **Input:**  
-> "Enter the name of the project: "  
-> "Enter the requirements for the project: "
+> "Enter the name of the project:"
+> "Trading Simulation Platform"
+> 
+> "Enter the requirements for the project:"
+> "Users can sign up, get virtual money, and practice trading stocks or crypto.
+Shows portfolio balance, trade history, and current prices.
+Works on mobile and desktop.
+Leaderboard and learning tips.
+Secure, easy to use, no real money involved."
 
 **Output:**  
 An automatically designed, architected, and coded web app, ready to run and deploy.  
