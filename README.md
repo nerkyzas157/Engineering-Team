@@ -101,4 +101,4 @@ You can find example output in **output/** directory.
 ---
 
 ## License
-This project is licensed under the (MIT License)[LICENSE] — feel free to use and adapt it for your own research automation workflows.
+This project is licensed under the [MIT License](LICENSE) — feel free to use and adapt it for your own research automation workflows.
