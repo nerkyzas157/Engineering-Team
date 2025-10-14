@@ -84,7 +84,7 @@ crewai run
 ## Example Use Case
 
 **Input:**  
-> "Enter the name of the project: "
+> "Enter the name of the project: "  
 > "Enter the requirements for the project: "
 
 **Output:**  
